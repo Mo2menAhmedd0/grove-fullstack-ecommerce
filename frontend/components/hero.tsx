@@ -64,7 +64,7 @@ export function Hero() {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted">
             <Image
-              src="/images/hero-market.png"
+              src="/images/pexels-arthousestudio-4589145.jpg"
               alt="A woven basket of freshly harvested vegetables, herbs and bread on a farm table"
               fill
               priority

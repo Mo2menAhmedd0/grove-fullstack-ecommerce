@@ -5,6 +5,13 @@ export type ProductTag =
   | "Seasonal"
   | "Last few"
   | "Best seller"
+  | "Fresh"
+  | "Limited edition"
+  | "Farm fresh"
+  | "Premium"
+  | "Popular"
+
+
 
 export interface IProduct extends Document {
   name: string
@@ -85,7 +92,7 @@ const productSchema = new Schema<IProduct>(
 
     tag: {
       type: String,
-      enum: ["New", "Seasonal", "Last few", "Best seller"],
+      enum: ["New", "Seasonal", "Last few", "Best seller", "Fresh", "Limited edition", "Farm fresh", "Premium", "Popular"],
     },
 
     note: {

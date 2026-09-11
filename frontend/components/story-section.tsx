@@ -42,7 +42,7 @@ export function StorySection() {
           <div className="grid grid-cols-2 gap-4">
             <div className="relative col-span-2 aspect-[16/9] overflow-hidden rounded-2xl bg-primary-foreground/10">
               <Image
-                src="/images/story-field.png"
+                src="/images/pexels-nc-farm-bureau-mark-22156649.jpg"
                 alt="Rows of leafy vegetables in a small organic market garden at dawn"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
@@ -51,7 +51,7 @@ export function StorySection() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-primary-foreground/10">
               <Image
-                src="/images/story-farmer.png"
+                src="/images/pexels-planka-24245903.jpg"
                 alt="A farmer holding a crate of freshly harvested root vegetables"
                 fill
                 sizes="(max-width: 1024px) 50vw, 28vw"
@@ -60,7 +60,7 @@ export function StorySection() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-primary-foreground/10">
               <Image
-                src="/images/story-box.png"
+                src="/images/pexels-rdne-7363147.jpg"
                 alt="A kraft delivery box packed with vegetables, bread and bottles on a doorstep"
                 fill
                 sizes="(max-width: 1024px) 50vw, 28vw"
