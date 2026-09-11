@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), Georgia, serif;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Neutrals */
+  --background: oklch(0.976 0.008 92);
+  --foreground: oklch(0.24 0.02 150);
+  --card: oklch(0.993 0.004 92);
+  --card-foreground: oklch(0.24 0.02 150);
+  --popover: oklch(0.993 0.004 92);
+  --popover-foreground: oklch(0.24 0.02 150);
+  --muted: oklch(0.938 0.013 92);
+  --muted-foreground: oklch(0.5 0.018 145);
+
+  /* Brand: deep grove green */
+  --primary: oklch(0.36 0.058 152);
+  --primary-foreground: oklch(0.976 0.012 95);
+  --secondary: oklch(0.93 0.02 130);
+  --secondary-foreground: oklch(0.3 0.04 150);
+
+  /* Accent: harvest ochre */
+  --accent: oklch(0.72 0.126 76);
+  --accent-foreground: oklch(0.25 0.04 60);
+
+  --destructive: oklch(0.53 0.17 27);
+  --border: oklch(0.885 0.014 100);
+  --input: oklch(0.885 0.014 100);
+  --ring: oklch(0.36 0.058 152);
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@utility text-edge {
+  font-feature-settings: 'ss01' 1;
+}
+
+@keyframes grove-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: grove-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility marquee-track {
+  animation: grove-marquee 34s linear infinite;
+}
+
+@keyframes grove-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
