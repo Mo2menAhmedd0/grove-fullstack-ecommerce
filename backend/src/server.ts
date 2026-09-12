@@ -14,7 +14,7 @@ const app = express()
 
 app.use(
   cors({
-    origin: "https://grove-fullstack-ecommerce.vercel.app/",
+    origin: "https://grove-fullstack-ecommerce.vercel.app",
     credentials: true,
   }),
 )
