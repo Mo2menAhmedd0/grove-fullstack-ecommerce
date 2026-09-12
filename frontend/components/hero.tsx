@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
+import mainImage from "@/public/images/pexels-arthousestudio-4589145.jpg";
 
 const stats = [
   { value: "68", label: "Family farms" },
@@ -64,7 +65,7 @@ export function Hero() {
         <div className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted">
             <Image
-              src="/public/images/pexels-arthousestudio-4589145.jpg"
+              src={mainImage}
               alt="A woven basket of freshly harvested vegetables, herbs and bread on a farm table"
               fill
               priority
