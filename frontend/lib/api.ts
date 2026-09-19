@@ -129,18 +129,23 @@ export async function logoutUser() {
 }
 
 export async function getCurrentUser() {
+  console.log("GET CURRENT USER")
+
   const response = await fetch(`${API_URL}/api/auth/me`, {
     method: "GET",
     credentials: "include",
-  });
+    cache: "no-store",
+  })
 
-  const result = await response.json();
+  const result = await response.json()
+
+  console.log("GET CURRENT USER RESPONSE:", response.status)
 
   if (!response.ok) {
-    throw new Error(result.message || "Not authenticated");
+    throw new Error(result.message || "Not authenticated")
   }
 
-  return result.data as AuthUser;
+  return result.data as AuthUser
 }
 export async function getMyOrders() {
   const response = await fetch(`${API_URL}/api/orders`, {

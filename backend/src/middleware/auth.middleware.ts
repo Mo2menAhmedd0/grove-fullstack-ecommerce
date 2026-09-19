@@ -32,9 +32,11 @@ export const protect = (
 ): void => {
   try {
     console.log("AUTH DEBUG:", {
-      cookies: req.cookies,
-      hasToken: !!req.cookies?.grove_token,
-    })
+  method: req.method,
+  path: req.originalUrl,
+  userAgent: req.get("user-agent"),
+  hasToken: !!req.cookies?.grove_token,
+})
 
     const token = req.cookies?.grove_token
 

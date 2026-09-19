@@ -63,21 +63,26 @@ export function AuthProvider({
   // =========================
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const currentUser =
-          await getCurrentUser()
+  const checkAuth = async () => {
+    console.log("AUTH CHECK START")
 
-        setUser(currentUser)
-      } catch {
-        setUser(null)
-      } finally {
-        setLoading(false)
-      }
+    try {
+      const currentUser = await getCurrentUser()
+
+      console.log("AUTH CHECK SUCCESS:", currentUser)
+
+      setUser(currentUser)
+    } catch (error) {
+      console.log("AUTH CHECK FAILED:", error)
+
+      setUser(null)
+    } finally {
+      setLoading(false)
     }
+  }
 
-    checkAuth()
-  }, [])
+  checkAuth()
+}, [])
 
 
   // =========================
