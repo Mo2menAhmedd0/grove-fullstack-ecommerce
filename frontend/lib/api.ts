@@ -29,7 +29,7 @@ export async function getProduct(slug: string) {
 }
 
 export async function createOrder(orderData: unknown) {
-  const response = await fetch(`${API_URL}/api/orders`, {
+  const response = await fetch("/api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export async function createOrder(orderData: unknown) {
 }
 
 export async function getOrder(id: string) {
-  const response = await fetch(`${API_URL}/api/orders/${id}`, {
+  const response = await fetch(`/api/orders/${id}`, {
     cache: "no-store",
     credentials: "include",
   });
@@ -148,7 +148,7 @@ export async function getCurrentUser() {
   return result.data as AuthUser
 }
 export async function getMyOrders() {
-  const response = await fetch(`${API_URL}/api/orders`, {
+  const response = await fetch("/api/orders", {
     method: "GET",
     cache: "no-store",
     credentials: "include",
@@ -164,7 +164,7 @@ export async function getMyOrders() {
 }
 
 export async function getAdminOrders() {
-  const response = await fetch(`${API_URL}/api/orders/admin`, {
+  const response = await fetch("/api/orders/admin", {
     method: "GET",
     cache: "no-store",
     credentials: "include",
@@ -180,7 +180,7 @@ export async function getAdminOrders() {
 }
 
 export async function updateOrderStatus(id: string, status: string) {
-  const response = await fetch(`${API_URL}/api/orders/${id}/status`, {
+  const response = await fetch(`/api/orders/${id}/status`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -213,7 +213,7 @@ export async function deleteProduct(id: string) {
 }
 
 export async function cancelOrder(id: string) {
-  const response = await fetch(`${API_URL}/api/orders/${id}/cancel`, {
+  const response = await fetch(`/api/orders/${id}/cancel`, {
     method: "PATCH",
     credentials: "include",
   });
