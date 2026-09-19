@@ -31,6 +31,11 @@ export const protect = (
   next: NextFunction,
 ): void => {
   try {
+    console.log("AUTH DEBUG:", {
+      cookies: req.cookies,
+      hasToken: !!req.cookies?.grove_token,
+    })
+
     const token = req.cookies?.grove_token
 
     if (!token) {
@@ -38,7 +43,6 @@ export const protect = (
         success: false,
         message: "Authentication required",
       })
-
       return
     }
 
