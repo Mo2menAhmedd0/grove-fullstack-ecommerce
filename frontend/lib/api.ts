@@ -76,7 +76,7 @@ export async function registerUser(data: {
   email: string;
   password: string;
 }) {
-  const response = await fetch(`${API_URL}/api/auth/register`, {
+  const response = await fetch("/api/auth/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -95,7 +95,7 @@ export async function registerUser(data: {
 }
 
 export async function loginUser(data: { email: string; password: string }) {
-  const response = await fetch(`${API_URL}/api/auth/login`, {
+  const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export async function loginUser(data: { email: string; password: string }) {
 }
 
 export async function logoutUser() {
-  const response = await fetch(`${API_URL}/api/auth/logout`, {
+  const response = await fetch("/api/auth/logout", {
     method: "POST",
     credentials: "include",
   });
@@ -131,7 +131,7 @@ export async function logoutUser() {
 export async function getCurrentUser() {
   console.log("GET CURRENT USER")
 
-  const response = await fetch(`${API_URL}/api/auth/me`, {
+  const response = await fetch("/api/auth/me", {
     method: "GET",
     credentials: "include",
     cache: "no-store",
