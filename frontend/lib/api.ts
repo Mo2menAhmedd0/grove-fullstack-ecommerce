@@ -1,35 +1,31 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://grove-fullstack-ecommerce-production.up.railway.app/"
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getProducts() {
   const response = await fetch(`${API_URL}/api/products`, {
     cache: "no-store",
-  })
+  });
 
   if (!response.ok) {
-    throw new Error("Failed to fetch products")
+    throw new Error("Failed to fetch products");
   }
 
-  const result = await response.json()
+  const result = await response.json();
 
-  return result.data
+  return result.data;
 }
 
 export async function getProduct(slug: string) {
-  const response = await fetch(
-    `${API_URL}/api/products/${slug}`,
-    {
-      cache: "no-store",
-    }
-  )
+  const response = await fetch(`${API_URL}/api/products/${slug}`, {
+    cache: "no-store",
+  });
 
   if (!response.ok) {
-    throw new Error("Failed to fetch product")
+    throw new Error("Failed to fetch product");
   }
 
-  const result = await response.json()
+  const result = await response.json();
 
-  return result.data
+  return result.data;
 }
 
 export async function createOrder(orderData: unknown) {
@@ -40,45 +36,45 @@ export async function createOrder(orderData: unknown) {
     },
     credentials: "include",
     body: JSON.stringify(orderData),
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to create order")
+    throw new Error(result.message || "Failed to create order");
   }
 
-  return result.data
+  return result.data;
 }
 
 export async function getOrder(id: string) {
   const response = await fetch(`${API_URL}/api/orders/${id}`, {
     cache: "no-store",
     credentials: "include",
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to fetch order")
+    throw new Error(result.message || "Failed to fetch order");
   }
 
-  return result.data
+  return result.data;
 }
 
 export type AuthUser = {
-  id: string
-  firstName: string
-  lastName: string
-  email: string
-  role: "user" | "admin"
-}
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: "user" | "admin";
+};
 
 export async function registerUser(data: {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
 }) {
   const response = await fetch(`${API_URL}/api/auth/register`, {
     method: "POST",
@@ -87,21 +83,18 @@ export async function registerUser(data: {
     },
     credentials: "include",
     body: JSON.stringify(data),
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to register")
+    throw new Error(result.message || "Failed to register");
   }
 
-  return result.data as AuthUser
+  return result.data as AuthUser;
 }
 
-export async function loginUser(data: {
-  email: string
-  password: string
-}) {
+export async function loginUser(data: { email: string; password: string }) {
   const response = await fetch(`${API_URL}/api/auth/login`, {
     method: "POST",
     headers: {
@@ -109,147 +102,122 @@ export async function loginUser(data: {
     },
     credentials: "include",
     body: JSON.stringify(data),
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to login")
+    throw new Error(result.message || "Failed to login");
   }
 
-  return result.data as AuthUser
+  return result.data as AuthUser;
 }
 
 export async function logoutUser() {
   const response = await fetch(`${API_URL}/api/auth/logout`, {
     method: "POST",
     credentials: "include",
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Failed to logout")
+    throw new Error(result.message || "Failed to logout");
   }
 
-  return result
+  return result;
 }
 
 export async function getCurrentUser() {
   const response = await fetch(`${API_URL}/api/auth/me`, {
     method: "GET",
     credentials: "include",
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Not authenticated")
+    throw new Error(result.message || "Not authenticated");
   }
 
-  return result.data as AuthUser
+  return result.data as AuthUser;
 }
 export async function getMyOrders() {
   const response = await fetch(`${API_URL}/api/orders`, {
     method: "GET",
     cache: "no-store",
     credentials: "include",
-  })
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      result.message || "Failed to fetch orders",
-    )
+    throw new Error(result.message || "Failed to fetch orders");
   }
 
-  return result.data
+  return result.data;
 }
 
 export async function getAdminOrders() {
-  const response = await fetch(
-    `${API_URL}/api/orders/admin`,
-    {
-      method: "GET",
-      cache: "no-store",
-      credentials: "include",
-    },
-  )
+  const response = await fetch(`${API_URL}/api/orders/admin`, {
+    method: "GET",
+    cache: "no-store",
+    credentials: "include",
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      result.message || "Failed to fetch orders",
-    )
+    throw new Error(result.message || "Failed to fetch orders");
   }
 
-  return result.data
+  return result.data;
 }
 
-export async function updateOrderStatus(
-  id: string,
-  status: string,
-) {
-  const response = await fetch(
-    `${API_URL}/api/orders/${id}/status`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ status }),
+export async function updateOrderStatus(id: string, status: string) {
+  const response = await fetch(`${API_URL}/api/orders/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
     },
-  )
+    credentials: "include",
+    body: JSON.stringify({ status }),
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      result.message || "Failed to update order status",
-    )
+    throw new Error(result.message || "Failed to update order status");
   }
 
-  return result.data
+  return result.data;
 }
 export async function deleteProduct(id: string) {
-  const response = await fetch(
-    `${API_URL}/api/products/${id}`,
-    {
-      method: "DELETE",
-      credentials: "include",
-    },
-  )
+  const response = await fetch(`${API_URL}/api/products/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      result.message || "Failed to delete product",
-    )
+    throw new Error(result.message || "Failed to delete product");
   }
 
-  return result.data
+  return result.data;
 }
 
 export async function cancelOrder(id: string) {
-  const response = await fetch(
-    `${API_URL}/api/orders/${id}/cancel`,
-    {
-      method: "PATCH",
-      credentials: "include",
-    },
-  )
+  const response = await fetch(`${API_URL}/api/orders/${id}/cancel`, {
+    method: "PATCH",
+    credentials: "include",
+  });
 
-  const result = await response.json()
+  const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(
-      result.message || "Failed to cancel order",
-    )
+    throw new Error(result.message || "Failed to cancel order");
   }
 
-  return result
+  return result;
 }

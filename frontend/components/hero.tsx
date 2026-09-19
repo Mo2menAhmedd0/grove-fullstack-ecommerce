@@ -2,6 +2,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import mainImage from "../public/images/pexels-arthousestudio-4589145.jpg";
 
+
 const stats = [
   { value: "68", label: "Family farms" },
   { value: "24h", label: "Picked to doorstep" },
