@@ -17,9 +17,9 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
-app.use("/api/orders", orderRoutes);
+app.get("/", (_req, res) => {
+  res.json({ message: "E-commerce API is running" });
+});
 
 let dbPromise: Promise<void> | null = null;
 
@@ -31,7 +31,6 @@ app.use(async (_req, _res, next) => {
         throw error;
       });
     }
-
     await dbPromise;
     next();
   } catch (error) {
@@ -39,8 +38,8 @@ app.use(async (_req, _res, next) => {
   }
 });
 
-app.get("/", (_req, res) => {
-  res.json({ message: "E-commerce API is running" });
-});
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 export default app;
